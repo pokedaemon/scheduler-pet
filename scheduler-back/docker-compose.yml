@@ -1,0 +1,22 @@
+version: "3.8"
+
+# NOT FINISHED
+
+services:
+  db:
+    image: postgres
+    restart: always
+    shm_size: 256mb
+    
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+  
+  scheduler_back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+      
